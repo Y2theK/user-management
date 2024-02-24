@@ -11,7 +11,8 @@
         <x-dropdown>
             <x-slot name="trigger">
                 <button @click="dropdownOpen = ! dropdownOpen" class="relative block overflow-hidden">
-                    {{ Auth::user()->name }}
+                    <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" class="w-8 h-8 rounded-full inline-block" alt="">
+                    {{-- {{ Auth::user()->name }} --}}
                 </button>
             </x-slot>
 

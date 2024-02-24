@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        {{ __('Add New User') }}
+        {{ __('Edit Role') }}
     </x-slot>
 
     <div class="mt-4">
@@ -26,7 +26,7 @@
                             @foreach($feature->permissions as $permission)
                            
                             <label class="inline-flex items-center ml-8">
-                                <input type="checkbox" name="permissions[]" class="form-checkbox h-5 w-5 text-indigo-600" value="{{ $permission->id }}" @checked($role->permissions->contains($permission) )>
+                                <input type="checkbox" name="permissions[]" class="form-checkbox h-5 w-5 text-indigo-500" value="{{ $permission->id }}" @checked($role->permissions->contains($permission) )>
                                     <span class="ml-2 text-gray-700 capitalize">{{ str_replace('_',' ',$permission->name)  }}</span>
                             </label>
                             @endforeach
@@ -35,7 +35,7 @@
                 </div>
                 <div class="flex justify-end mt-4">
                     <button type="submit"
-                        class="px-4 py-2 bg-indigo-800 text-gray-200 rounded-md hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700">Save</button>
+                        class="px-4 py-2 bg-indigo-600 text-gray-200 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">Save</button>
                 </div>
             </form>
         </div>
