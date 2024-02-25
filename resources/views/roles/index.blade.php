@@ -6,13 +6,7 @@
     <div class="text-right">
         <a href="{{ route('roles.create') }}" class="px-6 py-3 bg-indigo-600 rounded-md text-white font-small hover:bg-indigo-500 my-3 inline-block">Add New Role</a>
     </div>
-        @session('success') 
-        <div class="">
-            <div class="mx-3 mt-2 py-3 px-4 bg-green-50 rounded-md">
-                <p class="text-gray-600 text-sm">{{ session('success') }}</p>
-            </div>
-        </div>
-        @endsession 
+       @include('components.flash-messages.success')
         <div class="mt-4">
             <div class="">
                 <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 pb-4 overflow-x-auto">
@@ -51,7 +45,7 @@
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         @foreach ($role->permissions as $permission)
-                                        <span class="text-gray-900 whitespace-no-wrap bg-indigo-300 mr-1 rounded-md text-center p-1">
+                                        <span class="text-gray-900 whitespace-no-wrap bg-green-200 mr-1 rounded-full text-center py-1 px-2">
                                             {{ $permission->name }}
                                         </span>
                                         @endforeach

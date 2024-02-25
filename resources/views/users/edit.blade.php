@@ -6,17 +6,18 @@
     <div class="mt-4">
         <div class="p-6 bg-white rounded-md shadow-md">
             @include('components.flash-messages.errors')
-            <form action="{{ route('admin-users.store') }}" method="POST">
+            <form action="{{ route('admin-users.update',$admin_user->id) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
                     <div>
                         <label class="text-gray-700" for="username">Name</label>
-                        <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="text" name="name" autocomplete="name">
+                        <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="text" name="name" autocomplete="name" value="{{ $admin_user->name }}">
                     </div>
 
                     <div>
                         <label class="text-gray-700" for="username">Username</label>
-                        <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="text" name="username" autocomplete="username">
+                        <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="text" name="username" autocomplete="username" value="{{ $admin_user->username }}">
                     </div>
 
                     <div class="relative">
@@ -24,38 +25,38 @@
                         <select name="role_id"
                             class="appearance-none h-10 mt-2 rounded-md border block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                             @foreach($roles as $role)
-                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                            <option value="{{ $role->id }}" @selected($role->id === $admin_user->role_id)>{{ $role->name }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div>
                         <label class="text-gray-700" for="username">Phone</label>
-                        <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="number" name="phone" autocomplete="phone">
+                        <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="number" name="phone" autocomplete="phone" value="{{ $admin_user->phone }}">
                     </div>
 
                     <div>
                         <label class="text-gray-700" for="emailAddress">Email Address</label>
-                        <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="email" name="email" autocomplete="email">
+                        <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="email" name="email" autocomplete="email" value="{{ $admin_user->email }}">
                     </div>
 
                     <div>
                         <label class="text-gray-700" for="username">Address</label>
-                        <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="text" name="address" autocomplete="address">
+                        <input class="form-input w-full mt-2 rounded-md focus:border-indigo-600" type="text" name="address" autocomplete="address" value="{{ $admin_user->address }}">
                     </div>
 
                     <div class="relative">
                         <label class="text-gray-700" for="username">Gender</label>
                         <select name="gender"
                             class="appearance-none h-10 mt-2 rounded-md border block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
+                            <option value="male" @selected($admin_user->gender === 'male')>Male</option>
+                            <option value="female"  @selected($admin_user->gender === 'female')>Female</option>
+                            <option value="other"  @selected($admin_user->gender === 'other')>Other</option>
                         </select>
                     </div>
 
                     <div class="mt-10">
-                        <input type="checkbox" class="form-checkbox  h-5 w-5 text-indigo-600" checked name="is_active"><span
+                        <input type="checkbox" class="form-checkbox  h-5 w-5 text-indigo-600" @checked($admin_user->is_active) name="is_active" ><span
                             class="ml-2 text-gray-700">is Active</span>
                     </div>
                     <div>
