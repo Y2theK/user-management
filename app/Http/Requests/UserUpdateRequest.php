@@ -17,8 +17,8 @@ class UserUpdateRequest extends FormRequest
     public function prepareForValidation(){
         $this->merge([
             'is_active' => isset($this->is_active),
-            'password'  => $this->password ?? $this->admin_user->password,
-            'password_confirmation'  => $this->password_confirmation ?? $this->admin_user->password
+            'password'  => $this->password ?? $this->user->password,
+            'password_confirmation'  => $this->password_confirmation ?? $this->user->password
         ]);
     }
 
@@ -34,7 +34,7 @@ class UserUpdateRequest extends FormRequest
             'username' => 'required|string|max:255',
             'role_id' => 'required|exists:roles,id',
             'phone' => 'required|numeric',
-            'email' => 'required|email|string|unique:admin_users,email,' . $this->admin_user->id,
+            'email' => 'required|email|string|unique:users,email,' . $this->user->id,
             'address' => 'string|required',
             'gender' => 'required|string|in:male,female,other',
             'password' => 'required|min:6|confirmed',

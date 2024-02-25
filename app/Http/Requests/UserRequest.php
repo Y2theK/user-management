@@ -32,7 +32,7 @@ class UserRequest extends FormRequest
             'username' => 'required|string|max:255',
             'role_id' => 'required|exists:roles,id',
             'phone' => 'required|numeric',
-            'email' => 'required|email|string|unique:admin_users,email',
+            'email' => 'required|email|string|unique:users,email',
             'address' => 'string|required',
             'gender' => 'required|string|in:male,female,other',
             'password' => 'required|min:6|confirmed',

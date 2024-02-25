@@ -28,7 +28,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::view('about', 'about')->name('about');
 
-    Route::resource('admin-users', AdminUserController::class);
+    Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
