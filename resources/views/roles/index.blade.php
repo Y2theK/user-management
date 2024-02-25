@@ -6,7 +6,7 @@
     <div class="text-right">
         <a href="{{ route('roles.create') }}" class="px-6 py-3 bg-indigo-600 rounded-md text-white font-small hover:bg-indigo-500 my-3 inline-block">Add New Role</a>
     </div>
-       @include('components.flash-messages.success')
+       @include('components.flash-messages.status')
         <div class="mt-4">
             <div class="">
                 <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 pb-4 overflow-x-auto">

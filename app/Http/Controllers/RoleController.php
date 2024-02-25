@@ -49,9 +49,12 @@ class RoleController extends Controller
     }
 
     public function destroy(Role $role){
-
-        $role->delete();
-
-        return back()->with(['success' => 'Role Deleted Successfully']);
+        try {
+            $role->delete();
+            return back()->with(['success' => 'Role Deleted Successfully']);
+        } catch (\Throwable $th) {
+            return back()->with(['fail' => 'Something went wrong! ' . $th->getMessage()]);
+        }
+      
     }
 }
