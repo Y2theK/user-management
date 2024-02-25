@@ -10,6 +10,13 @@ use App\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:user_view')->only(['index','show']);
+        $this->middleware('permission:user_create')->only(['create','store']);
+        $this->middleware('permission:user_edit')->only(['edit','update']);
+        $this->middleware('permission:user_delete')->only(['destroy']);
+    }
     /**
      * Display a listing of the resource.
      */

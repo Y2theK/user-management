@@ -9,6 +9,14 @@ use App\Http\Requests\RoleRequest;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:role_view')->only(['index','show']);
+        $this->middleware('permission:role_create')->only(['create','store']);
+        $this->middleware('permission:role_edit')->only(['edit','update']);
+        $this->middleware('permission:role_delete')->only(['destroy']);
+    }
+
     public function index(){
 
         $roles = Role::with('permissions:id,name')->get(['id','name','created_at']);
