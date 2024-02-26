@@ -20,7 +20,7 @@ class RoleController extends Controller
     public function index(){
 
         $roles = Role::with('permissions:id,name')->get(['id','name','created_at']);
-        
+
         return view('roles.index',compact('roles'));
     }
 
