@@ -20,6 +20,7 @@ class RoleController extends Controller
     public function index(){
 
         $roles = Role::with('permissions:id,name')->get(['id','name','created_at']);
+        
         return view('roles.index',compact('roles'));
     }
 
@@ -31,9 +32,7 @@ class RoleController extends Controller
 
     public function store(RoleRequest $request){
 
-        $role = Role::create([
-            'name' => $request->validated('name')
-        ]);
+        $role = Role::create($request->validated());
 
         $role->permissions()->attach($request->validated('permissions'));
 
@@ -47,9 +46,7 @@ class RoleController extends Controller
 
     public function update(RoleRequest $request,Role $role){
 
-        $role->update([
-            'name' => $request->validated('name')
-        ]);
+        $role->update($request->validated());
 
         $role->permissions()->sync($request->validated('permissions'));
 
