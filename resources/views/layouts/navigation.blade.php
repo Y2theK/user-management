@@ -23,7 +23,7 @@
             </x-slot>
             {{ __('Dashboard') }}
         </x-nav-link>
-
+        @canany(['user_view','user_create','user_edit','user_delete'])
         <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
             <x-slot name="icon">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -32,7 +32,8 @@
             </x-slot>
             {{ __('Users') }}
         </x-nav-link>
-
+        @endcanany
+        @canany(['role_view','role_create','role_edit','role_delete'])
         <x-nav-link href="{{ route('roles.index') }}" :active="request()->routeIs('roles.index') || request()->routeIs('roles.create') || request()->routeIs('roles.edit')  ">
             <x-slot name="icon">
                 <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -41,14 +42,15 @@
             </x-slot>
             {{ __('Roles') }}
         </x-nav-link>
-
-        <!-- <x-nav-link href="#" @click="isMultiLevelMenuOpen = !isMultiLevelMenuOpen">
+        @endcanany
+        @hasrole('Admin')
+        <x-nav-link href="#" @click="isMultiLevelMenuOpen = !isMultiLevelMenuOpen">
             <x-slot name="icon">
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"></path>
                 </svg>
             </x-slot>
-            Two-level menu
+            Admin Only Menu
         </x-nav-link>
         <template x-if="isMultiLevelMenuOpen">
             <ul x-transition:enter="transition-all ease-in-out duration-300"
@@ -61,6 +63,7 @@
                     <a class="w-full" href="#">Child menu</a>
                 </li>
             </ul>
-        </template> -->
+        </template> 
+        @endhasrole
     </nav>
 </div>

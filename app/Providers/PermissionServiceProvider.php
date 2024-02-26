@@ -20,10 +20,31 @@ class PermissionServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Blade::directive('can', function ($permission) {
+        Blade::directive('can', function (string $permission) {
             return "<?php if (hasPermission($permission)): ?>";
         });
         Blade::directive('endcan', function () {
+            return "<?php endif; ?>";
+        });
+
+        Blade::directive('canany', function (string|array $permissions) {
+            return "<?php if (hasAnyPermission($permissions)): ?>";
+        });
+        Blade::directive('endcanany', function () {
+            return "<?php endif; ?>";
+        });
+
+        Blade::directive('hasrole', function (string $role) {
+            return "<?php if (hasRole($role)): ?>";
+        });
+        Blade::directive('endhasrole', function () {
+            return "<?php endif; ?>";
+        });
+
+        Blade::directive('hasanyrole', function (string|array $roles) {
+            return "<?php if (hasAnyPermission($roles)): ?>";
+        });
+        Blade::directive('endhasanyrole', function () {
             return "<?php endif; ?>";
         });
     }
