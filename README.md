@@ -3,7 +3,7 @@
 ### Description
 This application is about an user management starter dashboard with custom roles and permissions management
 
-`Laravel 10` `Mysql` `tailwindcss` `alpine-js`
+`Laravel 10` `Mysql` `tailwindcss` `alpine-js` `larastarter`
 
 ## Installation
 
@@ -22,10 +22,14 @@ composer install
 ```shell
 php artisan key:generate
 ```
+```shell
+php artisan migrate:fresh --seed
+```
 
 ```shell
 npm install && npm run dev
 ```
+
 ```shell
-php artisan migrate:fresh --seed
+php artisan serve
 ```

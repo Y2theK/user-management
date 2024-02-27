@@ -42,7 +42,7 @@ class PermissionServiceProvider extends ServiceProvider
         });
 
         Blade::directive('hasanyrole', function (string|array $roles) {
-            return "<?php if (hasAnyPermission($roles)): ?>";
+            return "<?php if (hasAnyRole($roles)): ?>";
         });
         Blade::directive('endhasanyrole', function () {
             return "<?php endif; ?>";
