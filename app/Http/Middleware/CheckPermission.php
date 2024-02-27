@@ -18,16 +18,17 @@ class CheckPermission
     public function handle(Request $request, Closure $next,$permission): Response
     {
         if(Auth::check()){
-            $permissions = Cache::remember('permissions-'.Auth::id(), $seconds = 86400, function ()  {
+            $permissions = Cache::tags('RandP')->remember('permissions-'.Auth::id(), $seconds = 86400, function ()  {
                 return Auth::user()->role->permissions()->pluck('name');
             });
              
-            $role = Cache::remember('role-'.Auth::id(), $seconds = 86400, function ()  {
+            $role = Cache::tags('RandP')->remember('role-'.Auth::id(), $seconds = 86400, function ()  {
                 return Auth::user()->role()->pluck('name');
             });
         }
-        
-        // forgetRolePermissionsCache(Auth::id());
+
+        // forgetAllRolePermissionsCache();
+        // forgetUserRolePermissionsCache(Auth::id());
         abort_if(! hasPermission($permission),403,"Access Denied");
 
         return $next($request);

@@ -36,6 +36,8 @@ class RoleController extends Controller
 
         $role->permissions()->attach($request->validated('permissions'));
 
+        forgetAllRolePermissionsCache();
+
         return redirect()->route('roles.index')->with(['success' => 'Role Created Successfully']);
     }
 
@@ -50,12 +52,17 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->validated('permissions'));
 
+        forgetAllRolePermissionsCache();
+
         return redirect()->route('roles.index')->with(['success' => 'Role Updated Successfully']);
     }
 
     public function destroy(Role $role){
         try {
             $role->delete();
+            
+            forgetAllRolePermissionsCache();
+
             return back()->with(['success' => 'Role Deleted Successfully']);
         } catch (\Throwable $th) {
             return back()->with(['fail' => 'Something went wrong! ' . $th->getMessage()]);

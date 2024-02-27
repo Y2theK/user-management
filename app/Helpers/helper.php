@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Cache;
  */
 if(!function_exists('getCachedPermissions')){
     function getCachedPermissions(int $id) : ?Collection{
-        return Cache::get('permissions-'.$id) ?? null;
+        return Cache::tags('RandP')->get('permissions-'.$id) ?? null;
     }
 }
 
@@ -19,17 +19,26 @@ if(!function_exists('getCachedPermissions')){
  */
 if(!function_exists('getCachedRole')){
     function getCachedRole(int $id) : ?Collection{
-        return Cache::get('role-'.$id) ?? null;
+        return Cache::tags('RandP')->get('role-'.$id) ?? null;
     }
 }
 
 /**
  * @return boolean 
  */
-if(!function_exists('forgetRolePermissionsCache')){
-    function forgetRolePermissionsCache(int $id) : bool{
-               Cache::forget('role-'.$id);
-        return Cache::forget('permissions-'.$id);
+if(!function_exists('forgetUserRolePermissionsCache')){
+    function forgetUserRolePermissionsCache(int $id) : bool{
+               Cache::tags('RandP')->forget('role-'.$id);
+        return Cache::tags('RandP')->forget('permissions-'.$id);
+    }
+}
+
+/**
+ * @return boolean 
+ */
+if(!function_exists('forgetAllRolePermissionsCache')){
+    function forgetAllRolePermissionsCache() : bool{
+        return Cache::tags('RandP')->flush();
     }
 }
 
