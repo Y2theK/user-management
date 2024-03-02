@@ -7,7 +7,9 @@
         <a href="{{ route('users.create') }}" class="px-6 py-3 bg-indigo-600 rounded-md text-white font-small hover:bg-indigo-500 my-3 inline-block">Add New User</a>
     </div>
     @endcan
-    @include('components.flash-messages.status')
+    
+    <x-flash-messages.status></x-flash-messages.status>
+
     <div class="mt-4 inline-block overflow-hidden min-w-full rounded-lg shadow">
 
         <table class="min-w-full leading-normal">

@@ -1,6 +1,8 @@
 <x-guest-layout>
+    
     <a href="/" class="flex justify-center items-center">
-        <x-application-logo class="w-20 h-20 fill-current text-gray-500"/>
+        <x-application-logo class="h-10 w-10"/>
+        <span class="text-gray-700 font-semibold text-2xl">Dashboard</span>
     </a>
 
     <!-- Session Status -->
@@ -53,7 +55,7 @@
 
         <div class="mt-6">
             <x-primary-button class="w-full">
-                {{ __('Log in') }}
+                {{ __('Sign in') }}
             </x-primary-button>
         </div>
 

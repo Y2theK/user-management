@@ -9,7 +9,9 @@
             New Role</a>
     </div>
     @endcan
-    @include('components.flash-messages.status')
+
+    <x-flash-messages.status></x-flash-messages.status>
+
     <div class="mt-4">
         <div class="">
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 pb-4 overflow-x-auto">

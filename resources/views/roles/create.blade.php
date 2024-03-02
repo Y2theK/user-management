@@ -5,7 +5,9 @@
 
     <div class="mt-4">
         <div class="p-6 bg-white rounded-md shadow-md" x-data="{ selectAllPermission : false }">
-            @include('components.flash-messages.errors')
+           
+            <x-flash-messages.errors></x-flash-messages.errors>
+
             <form action="{{ route('roles.store') }}" method="POST">
                 @csrf
                 <div class="grid grid-cols-1 gap-6 mt-4">

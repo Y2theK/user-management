@@ -5,7 +5,7 @@
 
     <div class="mt-4">
         <div class="p-6 bg-white rounded-md shadow-md" >
-            @include('components.flash-messages.errors')
+            <x-flash-messages.errors></x-flash-messages.errors>
             <form action="{{ route('roles.update',$role->id) }}" method="POST"  x-data="{ selectAllPermission : false}">
                 @csrf
                 @method('PUT')

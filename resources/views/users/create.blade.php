@@ -5,7 +5,9 @@
 
     <div class="mt-4">
         <div class="p-6 bg-white rounded-md shadow-md">
-            @include('components.flash-messages.errors')
+           
+            <x-flash-messages.errors></x-flash-messages.errors>
+           
             <form action="{{ route('users.store') }}" method="POST">
                 @csrf
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">

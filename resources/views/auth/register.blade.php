@@ -1,6 +1,8 @@
 <x-guest-layout>
     <a href="/" class="flex justify-center items-center">
-        <x-application-logo class="w-20 h-20 text-gray-500 fill-current"/>
+        <x-application-logo class="w-10 h-10"/>
+        <span class="text-gray-700 font-semibold text-2xl">Dashboard</span>
+
     </a>
 
     <form method="POST" action="{{ route('register') }}">
@@ -55,7 +57,7 @@
 
         <div class="flex flex-col items-end mt-4">
             <x-primary-button class="w-full">
-                {{ __('Register') }}
+                {{ __('Create an account') }}
             </x-primary-button>
 
             <a class="mt-4 text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('login') }}">
