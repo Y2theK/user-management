@@ -20,13 +20,7 @@ class PermissionServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Blade::directive('can', function (string $permission) {
-            return "<?php if (hasPermission($permission)): ?>";
-        });
-        Blade::directive('endcan', function () {
-            return "<?php endif; ?>";
-        });
-
+       
         Blade::directive('canany', function (string|array $permissions) {
             return "<?php if (hasAnyPermission($permissions)): ?>";
         });

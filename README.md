@@ -33,3 +33,7 @@ npm install && npm run dev
 ```shell
 php artisan serve
 ```
+### Login with
+
+- email - admin@admin.com
+- password - password
