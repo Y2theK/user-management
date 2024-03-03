@@ -20,11 +20,7 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot(): void
-    {   //dynamic gate define 
-        Gate::before(function (User $user, $ability) {
-            Gate::define($ability, function (User $user) use ($ability) {
-                return hasPermission($ability);
-            });
-      });
+    {   
+        //dynamic gate define 
     }
 }
