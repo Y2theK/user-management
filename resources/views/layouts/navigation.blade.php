@@ -50,7 +50,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"></path>
                 </svg>
             </x-slot>
-            Admin Only Menu
+            Ecommerce Menu
         </x-nav-link>
         <template x-if="isMultiLevelMenuOpen">
             <ul x-transition:enter="transition-all ease-in-out duration-300"
@@ -60,8 +60,15 @@
                 class="p-2 mx-4 mt-2 space-y-2 overflow-hidden text-sm font-medium text-white bg-gray-700 bg-opacity-50 rounded-md shadow-inner"
                 aria-label="submenu">
                 <li class="px-2 py-1 transition-colors duration-150">
-                    <a class="w-full" href="#">Child menu</a>
+                    <a href="{{ route('products.index') }}" class="w-full" href="#">Products</a>
                 </li>
+                <li class="px-2 py-1 transition-colors duration-150">
+                    <a href="{{ route('products.show',2) }}" class="w-full" href="#">Product Details</a>
+                </li>
+                <li class="px-2 py-1 transition-colors duration-150">
+                    <a href="{{ route('products.cart') }}" class="w-full" href="#">Cart</a>
+                </li>
+               
             </ul>
         </template> 
         @endhasrole

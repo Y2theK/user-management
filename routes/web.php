@@ -26,7 +26,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
     Route::view('about', 'about')->name('about');
+    Route::view('products', 'products.index')->name('products.index');
+    Route::view('carts', 'products.cart')->name('products.cart');
+    Route::view('products/{id}', 'products.show')->name('products.show');
 
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
